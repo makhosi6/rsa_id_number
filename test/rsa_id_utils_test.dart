@@ -14,6 +14,41 @@ void main() {
 
       expect(date.length, equals(6));
     });
+    test(
+        'generateDate should return a valid date string within specified range',
+        () {
+      DateTime maxDate = DateTime(1920, 1, 1);
+      DateTime minDate = DateTime.now();
+
+      String date = RsaIdUtils.generateDate(minDate: minDate, maxDate: maxDate);
+      int year = int.parse(date.substring(0, 2));
+
+      int month = int.parse(date.substring(2, 4));
+      int day = int.parse(date.substring(4, 6));
+
+      /// if year is 2000-based
+      DateTime generatedDate = DateTime(2000 + year, month, day);
+
+      /// if year is 1900-based
+      DateTime generatedDate2 = DateTime(1900 + year, month, day);
+
+      expect(
+          (generatedDate.isBefore(minDate) ||
+                  generatedDate.isAtSameMomentAs(minDate)) ||
+              (generatedDate2.isBefore(minDate) ||
+                  generatedDate2.isAtSameMomentAs(minDate)),
+          isTrue,
+          reason: 'Date should not be after minDate');
+      expect(
+          (generatedDate.isAfter(maxDate) ||
+                  generatedDate.isAtSameMomentAs(maxDate)) ||
+              (generatedDate2.isAfter(maxDate) ||
+                  generatedDate2.isAtSameMomentAs(maxDate)),
+          isTrue,
+          reason: 'Date should not be before maxDate');
+
+      expect(date.length, equals(6));
+    });
 
     test('generateGender should return a valid gender code', () {
       String gender = RsaIdUtils.generateGender(Gender.FEMALE);
