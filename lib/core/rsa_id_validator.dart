@@ -13,26 +13,18 @@ class RsaIdValidator {
     String checksumDigit = idNumber.substring(12, 13);
 
     if (!isValidDate(yymmdd)) {
-      print("isValidDate");
       return false;
     }
 
     if (!isValidSequentialNumber(sequentialNumber)) {
-      print("isValidSequentialNumber");
       return false;
     }
 
     if (!isValidCitizenship(citizenship)) {
-      print('isValidCitizenship');
       return false;
     }
 
-    // if (!Luhn.validate(idNumber)) {
-    //   print("Luhn.validate");
-    //   return false;
-    // }
     if (!isValidChecksum(idNumber)) {
-      print("isValidChecksum");
       return false;
     }
 
