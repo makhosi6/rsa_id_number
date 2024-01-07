@@ -10,7 +10,7 @@ class RsaIdValidator {
     String yymmdd = idNumber.substring(0, 6);
     String sequentialNumber = idNumber.substring(6, 10);
     String citizenship = idNumber.substring(10, 11);
-    String checksumDigit = idNumber.substring(12, 13);
+    // String checksumDigit = idNumber.substring(12, 13);
 
     if (!isValidDate(yymmdd)) {
       return false;
