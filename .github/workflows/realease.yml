@@ -26,8 +26,8 @@ jobs:
           - uses: subosito/flutter-action@v2
             with:
               flutter-version: ${{env.FLUTTER_VERSION}}
-          - run: dart pub get
-          - run: dart clean
+          - run: flutter pub get
+          - run: flutter clean
           - uses: ncipollo/release-action@v1
             with:
              token: ${{ secrets.GITHUB_TOKEN }}
