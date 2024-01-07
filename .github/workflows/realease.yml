@@ -27,7 +27,6 @@ jobs:
             with:
               flutter-version: ${{env.FLUTTER_VERSION}}
           - run: dart pub get
-          - run: dart clean
           - uses: ncipollo/release-action@v1
             with:
              token: ${{ secrets.GITHUB_TOKEN }}
