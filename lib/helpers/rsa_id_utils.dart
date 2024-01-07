@@ -7,12 +7,19 @@ import 'package:intl/intl.dart';
 import 'package:luhn_algorithm/luhn_algorithm.dart';
 
 class RsaIdUtils {
-  //TODO : min/max date/year
-  static String generateDate() {
-    DateTime timeBetweenDates = DateTime.now().subtract(
-        Duration(days: DateTime.now().difference(DateTime(1970, 1, 1)).inDays));
-    int daysBetweenDates =
-        DateTime.now().difference(DateTime(1970, 1, 1)).inDays;
+  static String generateDate({DateTime? maxDate, DateTime? minDate}) {
+    if (maxDate?.isAfter(minDate!) == true ||
+        maxDate?.isAtSameMomentAs(minDate!) == true) {
+      throw "Invalid date range: maxDate should not be after minDate.";
+    }
+    final fromDate = maxDate ?? DateTime(1920, 1, 1);
+    final toDate = minDate ?? DateTime.now();
+
+    DateTime timeBetweenDates =
+        toDate.subtract(Duration(days: toDate.difference(fromDate).inDays));
+
+    int daysBetweenDates = toDate.difference(fromDate).inDays;
+
     int randomNumberOfDays = Random().nextInt(daysBetweenDates);
     DateTime randomDate =
         timeBetweenDates.add(Duration(days: randomNumberOfDays));

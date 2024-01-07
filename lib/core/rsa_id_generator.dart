@@ -1,9 +1,13 @@
 import '../helpers/rsa_id_utils.dart';
 
 class RsaIdGenerator {
-  // TODO : add year min/max
-  static String generate({Gender? gender, Citizenship? citizenship}) {
-    String date = RsaIdUtils.generateDate();
+  static String generate({
+    Gender? gender,
+    Citizenship? citizenship,
+    DateTime? maxDate,
+    DateTime? minDate,
+  }) {
+    String date = RsaIdUtils.generateDate(maxDate: maxDate, minDate: minDate);
     String genderCode = RsaIdUtils.generateGender(gender);
     String citizenshipCode = RsaIdUtils.generateCitizenship(citizenship);
     int raceDeprecated = 8;
