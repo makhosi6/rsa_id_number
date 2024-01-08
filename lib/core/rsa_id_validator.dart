@@ -7,9 +7,9 @@ class RsaIdValidator {
       return false;
     }
 
-    String yymmdd = idNumber.substring(0, 6);
-    String sequentialNumber = idNumber.substring(6, 10);
-    String citizenship = idNumber.substring(10, 11);
+    final yymmdd = idNumber.substring(0, 6);
+    final sequentialNumber = idNumber.substring(6, 10);
+    final citizenship = idNumber.substring(10, 11);
     // String checksumDigit = idNumber.substring(12, 13);
 
     if (!isValidDate(yymmdd)) {
@@ -33,9 +33,9 @@ class RsaIdValidator {
 
   @visibleForTesting
   static bool isValidDate(String yymmdd) {
-    int year = int.parse(yymmdd.substring(0, 2));
-    int month = int.parse(yymmdd.substring(2, 4));
-    int day = int.parse(yymmdd.substring(4, 6));
+    final year = int.parse(yymmdd.substring(0, 2));
+    final month = int.parse(yymmdd.substring(2, 4));
+    final day = int.parse(yymmdd.substring(4, 6));
 
     if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31) {
       return false;
@@ -46,8 +46,8 @@ class RsaIdValidator {
 
   @visibleForTesting
   static bool isValidSequentialNumber(String sequentialNumber) {
-    int sequentialDigit = int.parse(sequentialNumber);
-    return (sequentialDigit >= 0 && sequentialDigit <= 9999);
+    final sequentialDigit = int.parse(sequentialNumber);
+    return sequentialDigit >= 0 && sequentialDigit <= 9999;
   }
 
   @visibleForTesting

@@ -12,22 +12,23 @@ class RsaIdUtils {
         maxDate?.isAtSameMomentAs(minDate!) == true) {
       throw "Invalid date range: maxDate should not be after minDate.";
     }
-    final fromDate = maxDate ?? DateTime(1920, 1, 1);
+    final fromDate = maxDate ?? DateTime(1920);
     final toDate = minDate ?? DateTime.now();
 
-    DateTime timeBetweenDates =
+    final timeBetweenDates =
         toDate.subtract(Duration(days: toDate.difference(fromDate).inDays));
 
-    int daysBetweenDates = toDate.difference(fromDate).inDays;
+    final int daysBetweenDates = toDate.difference(fromDate).inDays;
 
-    int randomNumberOfDays = Random().nextInt(daysBetweenDates);
-    DateTime randomDate =
+    final int randomNumberOfDays = Random().nextInt(daysBetweenDates);
+    final DateTime randomDate =
         timeBetweenDates.add(Duration(days: randomNumberOfDays));
     return DateFormat('yyMMdd').format(randomDate);
   }
 
   static String generateGender(Gender? gender) {
-    late int min, max;
+    late int min;
+    late int max;
     if (gender != null) {
       if (gender == Gender.FEMALE) {
         min = 0;
@@ -41,7 +42,7 @@ class RsaIdUtils {
       max = 10000;
     }
 
-    int randInt = Random().nextInt(max - min) + min;
+    final int randInt = Random().nextInt(max - min) + min;
     return randInt.toString().padLeft(4, '0');
   }
 
@@ -54,20 +55,20 @@ class RsaIdUtils {
   }
 
   static String luhnAppend(String input) {
-    List<int> digits =
+    final digits =
         input.codeUnits.map((char) => char - '0'.codeUnitAt(0)).toList();
     digits.add(luhnChecksum(digits));
     return utf8
         .decode(digits.map((digit) => digit + '0'.codeUnitAt(0)).toList());
   }
 
-  static int luhnChecksum(List<int> digits) => Luhn.checksum(digits.join(""));
+  static int luhnChecksum(List<int> digits) => Luhn.checksum(digits.join());
 
   static int luhnChecksum2(List<int> digits) {
     int sum = 0;
     for (int i = digits.length - 1; i >= 0; i--) {
       int digit = digits[i];
-      if ((digits.length - i) % 2 == 0) {
+      if ((digits.length - i).isEven) {
         digit *= 2;
         if (digit > 9) {
           digit -= 9;
