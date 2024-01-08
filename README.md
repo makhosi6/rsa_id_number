@@ -13,7 +13,7 @@ Add the following line to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  rsa_id_number: ^1.0.0
+  rsa_id_number: 
 ```
 
 Then run:
@@ -55,7 +55,7 @@ void main() {
 
 ## Contributing
 
-Feel free to contribute to this project by submitting issues and pull requests.
+Feel free to [contribute](./CONTRIBUTE.md) to this project by submitting issues and pull requests.
 
 ## License
 
