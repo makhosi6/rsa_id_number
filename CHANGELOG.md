@@ -10,3 +10,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## 0.0.2 - 2024-01-07
 
 - publish with updated  description & metadata
+
+## 0.1.4 - 2024-01-08
+
+- fix linter errors and update analysis rules
