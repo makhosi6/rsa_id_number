@@ -1,6 +1,6 @@
 name: rsa_id_number
 description: A package that provides easy-to-use Dart utilities for validating and generating South African ID numbers, ensuring accuracy and compliance with the ID number format. Whether you need to verify existing IDs or create random ones, this package simplifies the process.
-version: 0.1.6
+version: 0.1.7
 homepage: 'https://github.com/makhosi6/rsa_id_number'
 
 environment:
