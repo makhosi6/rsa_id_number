@@ -59,6 +59,7 @@ void main() {
     maxDate: DateTime(1969),
     minDate: DateTime.now(),
   );
+  log('Generated ID: $rsaIdNumber2');
 }
 ```
 

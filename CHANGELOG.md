@@ -14,3 +14,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## 0.1.5 - 2024-01-08
 
 - fix linter errors and update analysis rules
+
+## 0.1.6 - 2024-01-08
+
+- update the readme file
+
+## 0.1.7 - 2024-01-09
+
+- 'intl': always use the latest version
