@@ -13,7 +13,7 @@ Add the following line to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  rsa_id_number: 
+  rsa_id_number:
 ```
 
 Then run:
@@ -48,8 +48,17 @@ void main() {
 import 'package:rsa_id_number/rsa_id_generator.dart';
 
 void main() {
-  String randomId = RsaIdGenerator.generate();
-  print('Generated ID: $randomId');
+  /// Generation a random/valid SA id number
+  final rsaIdNumber = RsaIdGenerator.generate();
+  log('Generated ID: $rsaIdNumber');
+
+  /// generate with options
+  final rsaIdNumber2 = RsaIdGenerator.generate(
+    gender: Gender.FEMALE,
+    citizenship: Citizenship.CITIZEN_BORN,
+    maxDate: DateTime(1969),
+    minDate: DateTime.now(),
+  );
 }
 ```
 
