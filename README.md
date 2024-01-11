@@ -48,7 +48,7 @@ void main() {
 import 'package:rsa_id_number/rsa_id_generator.dart';
 
 void main() {
-  /// Generation a random/valid SA id number
+  /// generate a random/valid SA id number
   final rsaIdNumber = RsaIdGenerator.generate();
   log('Generated ID: $rsaIdNumber');
 
