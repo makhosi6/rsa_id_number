@@ -1,19 +1,23 @@
-// ignore_for_file: constant_identifier_names
-
 import 'dart:convert';
 import 'dart:math';
 
 import 'package:intl/intl.dart';
 import 'package:luhn_algorithm/luhn_algorithm.dart';
 
+/// Utility functions for manipulating and validating South African ID numbers.
 class RsaIdUtils {
+  /// Generates a random date of birth (YYMMDD) within a specified date range.
+  ///
+  /// The [maxDate] and [minDate] parameters define the date range for generating the birth date.
+  /// Returns a string representing the generated date of birth.
   static String generateDate({DateTime? maxDate, DateTime? minDate}) {
-    if (maxDate?.isAfter(minDate!) == true ||
-        maxDate?.isAtSameMomentAs(minDate!) == true) {
-      throw "Invalid date range: maxDate should not be after minDate.";
-    }
     final fromDate = maxDate ?? DateTime(1920);
     final toDate = minDate ?? DateTime.now();
+
+    if (fromDate.isAfter(toDate) == true ||
+        fromDate.isAtSameMomentAs(toDate) == true) {
+      throw "Invalid date range: maxDate should not be after minDate.";
+    }
 
     final timeBetweenDates =
         toDate.subtract(Duration(days: toDate.difference(fromDate).inDays));
@@ -26,6 +30,10 @@ class RsaIdUtils {
     return DateFormat('yyMMdd').format(randomDate);
   }
 
+  /// Generates a gender code (SSSS) based on the provided [gender].
+  ///
+  /// The [gender] parameter specifies the gender ('female' or 'male').
+  /// Returns a string representing the generated gender code.
   static String generateGender(Gender? gender) {
     late int min;
     late int max;
@@ -46,6 +54,10 @@ class RsaIdUtils {
     return randInt.toString().padLeft(4, '0');
   }
 
+  /// Generates a citizenship code (C) based on the provided [citizenship].
+  ///
+  /// The [citizenship] parameter specifies the citizenship ('citizen' or 'resident').
+  /// Returns a string representing the generated citizenship code.
   static String generateCitizenship([Citizenship? citizenship]) {
     if (citizenship == null) {
       return Random().nextBool() ? '0' : '1';
@@ -54,16 +66,30 @@ class RsaIdUtils {
     }
   }
 
+  /// Appends a Luhn checksum digit (Z) to the input string.
+  ///
+  /// The [input] parameter is the string to which the checksum is appended.
+  /// Returns the input string with the Luhn checksum digit appended.
   static String luhnAppend(String input) {
     final digits =
         input.codeUnits.map((char) => char - '0'.codeUnitAt(0)).toList();
     digits.add(luhnChecksum(digits));
+
     return utf8
         .decode(digits.map((digit) => digit + '0'.codeUnitAt(0)).toList());
   }
 
+  /// Calculates the Luhn checksum for a list of digits (alternative implementation).
+  ///
+  /// The [digits] parameter is a list of digits for which the checksum is calculated.
+  /// Returns the calculated Luhn checksum as an integer.
   static int luhnChecksum(List<int> digits) => Luhn.checksum(digits.join());
 
+  /// Calculates the Luhn checksum for a list of digits (alternative implementation).
+  ///
+  /// The [digits] parameter is a list of digits for which the checksum is calculated.
+  /// Returns the calculated Luhn checksum as an integer.
+  @Deprecated('Use [luhnChecksum]')
   static int luhnChecksum2(List<int> digits) {
     int sum = 0;
     for (int i = digits.length - 1; i >= 0; i--) {
