@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - lcov.info - core/rsa_id_parse.dart</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory core">core</a> - rsa_id_parse.dart<span style="font-size: 80%;"> (source / <a href="rsa_id_parse.dart.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">lcov.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">23</td>
+            <td class="headerCovTableEntry">23</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-06-01 05:26:39</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">-</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : import 'package:rsa_id_number/rsa_id_number.dart';</span>
+<span id="L2"><span class="lineNum">       2</span>              : </span>
+<span id="L3"><span class="lineNum">       3</span>              : /// Parse South African ID numbers into an object with properties, i.e, date of birth, sex, race, etc.</span>
+<span id="L4"><span class="lineNum">       4</span>              : class RsaIdParser {</span>
+<span id="L5"><span class="lineNum">       5</span>              :   </span>
+<span id="L6"><span class="lineNum">       6</span>              :   final String idNumber;</span>
+<span id="L7"><span class="lineNum">       7</span>              :   /// DateTime object representing the date of birth, extracted from the first 6 characters of the ID number</span>
+<span id="L8"><span class="lineNum">       8</span>              :   late final DateTime dateOfBirth;</span>
+<span id="L9"><span class="lineNum">       9</span>              :   // gender or sex, extracted from character 7 - 11 of the ID number</span>
+<span id="L10"><span class="lineNum">      10</span>              :   late final Gender sex;</span>
+<span id="L11"><span class="lineNum">      11</span>              : </span>
+<span id="L12"><span class="lineNum">      12</span>              :   /// an enum to indicate if you were born in South africa or not</span>
+<span id="L13"><span class="lineNum">      13</span>              :   late final Citizenship citizenship;</span>
+<span id="L14"><span class="lineNum">      14</span>              : </span>
+<span id="L15"><span class="lineNum">      15</span>              :   /// returns 8 always, since race is not longer used</span>
+<span id="L16"><span class="lineNum">      16</span>              :   late final int race;</span>
+<span id="L17"><span class="lineNum">      17</span>              : </span>
+<span id="L18"><span class="lineNum">      18</span>              :   /// this property user [RsaIdValidator] class to validate an id number</span>
+<span id="L19"><span class="lineNum">      19</span>              :   late final bool isValid;</span>
+<span id="L20"><span class="lineNum">      20</span>              : </span>
+<span id="L21"><span class="lineNum">      21</span>              :   /// [idNumber] is the 13-digit South African ID number.</span>
+<span id="L22"><span class="lineNum">      22</span>              :   /// Throws an exception if the ID number is not valid.</span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC tlaBgGNC">           1 :   RsaIdParser.parse(this.idNumber) {</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           3 :     if (idNumber.length != 13) {</span></span>
+<span id="L25"><span class="lineNum">      25</span>              :       throw 'Invalid ID number length';</span>
+<span id="L26"><span class="lineNum">      26</span>              :     }</span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           4 :     dateOfBirth = _parseDateOfBirth(idNumber.substring(0, 6));</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           4 :     sex = _parseGender(idNumber.substring(6, 10));</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           4 :     citizenship = _parseCitizenship(idNumber.substring(10, 11));</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">           4 :     race = int.parse(idNumber.substring(11, 12));</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           3 :     isValid = _validateIdNumber(idNumber);</span></span>
+<span id="L32"><span class="lineNum">      32</span>              :   }</span>
+<span id="L33"><span class="lineNum">      33</span>              : </span>
+<span id="L34"><span class="lineNum">      34</span>              :   /// Parses the date of birth from the ID number</span>
+<span id="L35"><span class="lineNum">      35</span>              :   ///</span>
+<span id="L36"><span class="lineNum">      36</span>              :   /// [dateOfBirthStr] is a string in the format YYMMDD.</span>
+<span id="L37"><span class="lineNum">      37</span>              :   /// Returns the date of birth as a DateTime object.</span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           1 :   DateTime _parseDateOfBirth(String dateOfBirthStr) {</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">           1 :     final now = DateTime.now();</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">           2 :     final int year = int.parse(dateOfBirthStr.substring(0, 2));</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           2 :     final int month = int.parse(dateOfBirthStr.substring(2, 4));</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">           2 :     final int day = int.parse(dateOfBirthStr.substring(4));</span></span>
+<span id="L43"><span class="lineNum">      43</span>              : </span>
+<span id="L44"><span class="lineNum">      44</span>              :     /// If [year] is greater than current year we assume it's the last century(1900) otherwise use current century(2000)</span>
+<span id="L45"><span class="lineNum">      45</span>              :     /// NOTE: [year] is a two digit number at this point</span>
+<span id="L46"><span class="lineNum">      46</span>              :     final century =</span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">           5 :         (int.parse('${now.year}'.substring(2, 4)) &lt; year) ? 1900 : 2000;</span></span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">           1 :     final fullYear = century + year;</span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">           1 :     return DateTime(fullYear, month, day);</span></span>
+<span id="L50"><span class="lineNum">      50</span>              :   }</span>
+<span id="L51"><span class="lineNum">      51</span>              : </span>
+<span id="L52"><span class="lineNum">      52</span>              :   /// Parses the gender from the ID number</span>
+<span id="L53"><span class="lineNum">      53</span>              :   ///</span>
+<span id="L54"><span class="lineNum">      54</span>              :   /// [genderStr] is a string representing the gender code.</span>
+<span id="L55"><span class="lineNum">      55</span>              :   /// Returns the gender as a Gender enum.</span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">           1 :   Gender _parseGender(String genderStr) {</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">           1 :     final int genderCode = int.parse(genderStr);</span></span>
+<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">           1 :     return genderCode &lt; 5000 ? Gender.FEMALE : Gender.MALE;</span></span>
+<span id="L59"><span class="lineNum">      59</span>              :   }</span>
+<span id="L60"><span class="lineNum">      60</span>              : </span>
+<span id="L61"><span class="lineNum">      61</span>              :   /// Parses the citizenship from the ID number</span>
+<span id="L62"><span class="lineNum">      62</span>              :   ///</span>
+<span id="L63"><span class="lineNum">      63</span>              :   /// [citizenshipStr] is a string representing the citizenship code.</span>
+<span id="L64"><span class="lineNum">      64</span>              :   /// Returns the citizenship as a Citizenship enum.</span>
+<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">           1 :   Citizenship _parseCitizenship(String citizenshipStr) {</span></span>
+<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC">           1 :     final int citizenshipCode = int.parse(citizenshipStr);</span></span>
+<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">           1 :     return citizenshipCode == 0</span></span>
+<span id="L68"><span class="lineNum">      68</span>              :         ? Citizenship.CITIZEN_BORN</span>
+<span id="L69"><span class="lineNum">      69</span>              :         : Citizenship.CITIZEN_NOT_BORN;</span>
+<span id="L70"><span class="lineNum">      70</span>              :   }</span>
+<span id="L71"><span class="lineNum">      71</span>              : </span>
+<span id="L72"><span class="lineNum">      72</span>              :   /// Validates the ID number using the Luhn algorithm</span>
+<span id="L73"><span class="lineNum">      73</span>              :   ///</span>
+<span id="L74"><span class="lineNum">      74</span>              :   /// [idNumber] is the full 13-digit ID number.</span>
+<span id="L75"><span class="lineNum">      75</span>              :   /// Returns `true` if the ID number is valid, otherwise `false`.</span>
+<span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">           1 :   bool _validateIdNumber(String idNumber) {</span></span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">           1 :     return RsaIdValidator.isValid(idNumber);</span></span>
+<span id="L78"><span class="lineNum">      78</span>              :   }</span>
+<span id="L79"><span class="lineNum">      79</span>              : }</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.1-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>
