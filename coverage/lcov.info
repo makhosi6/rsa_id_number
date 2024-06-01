@@ -32,16 +32,7 @@ DA:75,12
 DA:76,4
 DA:79,12
 DA:86,6
-DA:92,0
-DA:95,0
-DA:96,0
-DA:97,0
-DA:98,0
-DA:99,0
-DA:100,0
-DA:103,0
-DA:105,0
-LF:32
+LF:23
 LH:23
 end_of_record
 SF:lib/core/rsa_id_parse.dart
@@ -90,7 +81,7 @@ DA:57,4
 DA:59,4
 DA:60,8
 DA:66,4
-DA:68,7
+DA:68,6
 DA:74,4
 DA:75,4
 LF:21

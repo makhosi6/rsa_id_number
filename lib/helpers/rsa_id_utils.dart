@@ -84,28 +84,6 @@ class RsaIdUtils {
   /// The [digits] parameter is a list of digits for which the checksum is calculated.
   /// Returns the calculated Luhn checksum as an integer.
   static int luhnChecksum(List<int> digits) => Luhn.checksum(digits.join());
-
-  /// Calculates the Luhn checksum for a list of digits (alternative implementation).
-  ///
-  /// The [digits] parameter is a list of digits for which the checksum is calculated.
-  /// Returns the calculated Luhn checksum as an integer.
-  @Deprecated('Use [luhnChecksum]')
-  static int luhnChecksum2(List<int> digits) {
-    int sum = 0;
-    for (int i = digits.length - 1; i >= 0; i--) {
-      int digit = digits[i];
-      if ((digits.length - i).isEven) {
-        digit *= 2;
-        if (digit > 9) {
-          digit -= 9;
-        }
-      }
-      sum += digit;
-    }
-    final checksum = (sum * 9) % 10;
-
-    return checksum;
-  }
 }
 
 enum Gender { FEMALE, MALE }
