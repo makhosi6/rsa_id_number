@@ -26,3 +26,9 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 ## 0.1.8 - 2024-01-11
 
 - implement pub.dev recommendations, [see more](https://github.com/makhosi6/rsa_id_number/pull/9)
+
+## [Complete] 1.0.0 - 2024-06-01
+
+### Added
+- last and final module to parse id(string) to object
+- the package it feature complete, it has all intended functionality(create, validate and parse rsa IDs)
