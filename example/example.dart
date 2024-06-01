@@ -20,4 +20,13 @@ void main() {
     minDate: DateTime.now(),
   );
   log('Generated with opts: $rsaIdNumber2');
+
+
+  /// Parser
+  final RsaIdParser parser = RsaIdParser.parse(rsaIdNumber);
+
+  log('Date of Birth: ${parser.dateOfBirth}');
+  log('Gender: ${parser.sex}');
+  log('Citizenship: ${parser.citizenship}');
+  log('Is Valid: ${parser.isValid}');
 }
