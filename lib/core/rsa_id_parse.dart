@@ -1,11 +1,21 @@
 import 'package:rsa_id_number/rsa_id_number.dart';
 
+/// Parse South African ID numbers into an object with properties, i.e, date of birth, sex, race, etc.
 class RsaIdParser {
+  
   final String idNumber;
+  /// DateTime object representing the date of birth, extracted from the first 6 characters of the ID number
   late final DateTime dateOfBirth;
+  // gender or sex, extracted from character 7 - 11 of the ID number
   late final Gender sex;
+
+  /// an enum to indicate if you were born in South africa or not
   late final Citizenship citizenship;
+
+  /// returns 8 always, since race is not longer used
   late final int race;
+
+  /// this property user [RsaIdValidator] class to validate an id number
   late final bool isValid;
 
   /// [idNumber] is the 13-digit South African ID number.

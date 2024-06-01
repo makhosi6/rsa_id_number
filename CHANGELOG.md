@@ -32,3 +32,12 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 ### Added
 - last and final module to parse id(string) to object
 - the package is feature complete, it has all intended functionality(create, validate and parse rsa IDs)
+
+## 1.0.1 - 2024-06-01
+
+- update the docs
+
+## 1.0.2 - 2024-06-01
+
+- code coverage
+- remove unused and and un-tested code
