@@ -6,6 +6,7 @@ A Dart package for validating and generating South African ID numbers.
 
 - **Validation**: Validate South African ID numbers based on the specified [format](https://en.wikipedia.org/wiki/South_African_identity_card).
 - **Generation**: Generate random South African ID numbers.
+- **Parser**: Parse string(ID numbers) to Object
 
 ## Installation
 
@@ -60,6 +61,23 @@ void main() {
     minDate: DateTime.now(),
   );
   log('Generated ID: $rsaIdNumber2');
+}
+```
+
+### Parser
+
+```dart
+import 'package:rsa_id_number/rsa_id_generator.dart';
+
+void main() {
+  String idNumber = "8801235121088";
+  RsaIdParser parser = RsaIdParser.parse(idNumber);
+
+  print('Date of Birth: ${parser.dateOfBirth}');
+  print('Gender: ${parser.sex}');
+  print('Citizenship: ${parser.citizenship}');
+  print('Race: ${parser.race}');
+  print('Is Valid: ${parser.isValid}');
 }
 ```
 
