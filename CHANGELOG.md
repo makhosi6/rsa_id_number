@@ -27,7 +27,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 - implement pub.dev recommendations, [see more](https://github.com/makhosi6/rsa_id_number/pull/9)
 
-## [Complete] 1.0.0 - 2024-06-01
+## 1.0.0 - 2024-06-01
 
 ### Added
 - last and final module to parse id(string) to object
