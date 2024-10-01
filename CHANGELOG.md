@@ -41,3 +41,9 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 - code coverage
 - remove unused and and un-tested code
+
+## 1.0.4 - 2024-10-01
+
+- fix dart analysis warnings
+- exclude coverage files
+- new android module changes
