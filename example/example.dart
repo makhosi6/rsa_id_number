@@ -21,7 +21,6 @@ void main() {
   );
   log('Generated with opts: $rsaIdNumber2');
 
-
   /// Parser
   final RsaIdParser parser = RsaIdParser.parse(rsaIdNumber);
 
