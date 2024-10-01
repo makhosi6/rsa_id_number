@@ -7,7 +7,6 @@ void main() {
       const String idNumber = '7309179271083';
 
       final RsaIdParser parser = RsaIdParser.parse(idNumber);
-      
 
       expect(parser.dateOfBirth, DateTime.parse('19730917'));
       expect(parser.sex, Gender.MALE);
@@ -16,18 +15,16 @@ void main() {
     });
 
     test('should throw an exception for an invalid ID number length', () {
-    const invalidIdNumber = '7309179';
+      const invalidIdNumber = '7309179';
 
       expect(() => RsaIdParser.parse(invalidIdNumber), throwsA(isA<String>()));
     });
 
     test('should return false for an invalid ID number', () {
-      const invalidIdNumber = '7309179271088';  
+      const invalidIdNumber = '7309179271088';
       final RsaIdParser parser = RsaIdParser.parse(invalidIdNumber);
 
       expect(parser.isValid, false);
     });
   });
-
-
 }
