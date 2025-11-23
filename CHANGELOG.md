@@ -41,3 +41,8 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 - code coverage
 - remove unused and and un-tested code
+
+## 1.0.4 - 2025-11-23
+
+- upgrade dependencies to latest major versions
+- ensure compatibility with latest flutter version ([v3.38.0](https://docs.flutter.dev/release/release-notes/release-notes-3.38.0))
