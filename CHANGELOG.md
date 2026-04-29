@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. All changes/updates/entries are not 'breaking changes' unless otherwise mentioned.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.1.1 - 2026-04-29
+
+- add FVM-first Makefile workflow with automatic setup
+- add publish command (`make publish`)
+- refresh README development instructions and update Dart SDK constraint
+
 ## 1.1.0 - 2026-04-29
 
 - replace third-party `luhn_algorithm` dependency with an internal Luhn implementation
