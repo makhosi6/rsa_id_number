@@ -1,5 +1,5 @@
-import 'package:rsa_id_number/helpers/luhn.dart';
 import 'package:meta/meta.dart';
+import 'package:rsa_id_number/helpers/luhn.dart';
 
 /// Validates South African ID numbers based on specified rules.
 class RsaIdValidator {
