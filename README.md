@@ -14,19 +14,43 @@ Add the following line to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  rsa_id_number:
+  rsa_id_number: ^1.1.1
 ```
 
 Then run:
 
 ```bash
-$ pub get
+$ fvm flutter pub get
 ```
 
 or
 
 ```bash
 $ flutter pub get
+```
+
+If you use FVM (recommended), run:
+
+```bash
+$ fvm flutter pub get
+```
+
+## Development
+
+This repository uses `fvm` in the `Makefile` to keep Flutter/Dart commands pinned to the project SDK.
+
+```bash
+# Run tests with coverage
+make test
+
+# Build HTML coverage report
+make coverage
+
+# Open HTML coverage report
+make open
+
+# Publish package (publist is an alias)
+make publish
 ```
 
 ## Usage
