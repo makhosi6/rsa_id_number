@@ -20,7 +20,7 @@ dependencies:
 Then run:
 
 ```bash
-$ fvm flutter pub get
+$ dart pub get
 ```
 
 or
@@ -49,7 +49,7 @@ make coverage
 # Open HTML coverage report
 make open
 
-# Publish package (publist is an alias)
+# Publish package
 make publish
 ```
 
