@@ -1,5 +1,5 @@
-import 'package:luhn_algorithm/luhn_algorithm.dart';
 import 'package:meta/meta.dart';
+import 'package:rsa_id_number/helpers/luhn.dart';
 
 /// Validates South African ID numbers based on specified rules.
 class RsaIdValidator {
@@ -72,5 +72,5 @@ class RsaIdValidator {
   ///
   /// Returns `true` if the checksum is valid; otherwise, returns `false`.
   @visibleForTesting
-  static bool isValidChecksum(String idNumber) => Luhn.validate(idNumber);
+  static bool isValidChecksum(String idNumber) => LuhnUtils.validate(idNumber);
 }

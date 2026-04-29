@@ -9,6 +9,11 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 - add publish command (`make publish`)
 - refresh README development instructions and update Dart SDK constraint
 
+## 1.1.0 - 2026-04-29
+
+- replace third-party `luhn_algorithm` dependency with an internal Luhn implementation
+- reduce supply-chain risk by removing external checksum package dependency
+
 ## 0.0.1 - 2024-01-07
 
 - initial draft
