@@ -14,7 +14,7 @@ Add the following line to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  rsa_id_number: ^1.1.1
+  rsa_id_number: ^1.1.2
 ```
 
 Then run:
