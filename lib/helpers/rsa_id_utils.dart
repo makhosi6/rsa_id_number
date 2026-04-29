@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:intl/intl.dart';
-import 'package:luhn_algorithm/luhn_algorithm.dart';
+import 'package:rsa_id_number/helpers/luhn.dart';
 
 /// Utility functions for manipulating and validating South African ID numbers.
 class RsaIdUtils {
@@ -83,7 +83,7 @@ class RsaIdUtils {
   ///
   /// The [digits] parameter is a list of digits for which the checksum is calculated.
   /// Returns the calculated Luhn checksum as an integer.
-  static int luhnChecksum(List<int> digits) => Luhn.checksum(digits.join());
+  static int luhnChecksum(List<int> digits) => LuhnUtils.checksum(digits);
 }
 
 enum Gender { FEMALE, MALE }
