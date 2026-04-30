@@ -14,13 +14,13 @@ Add the following line to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  rsa_id_number: ^1.1.1
+  rsa_id_number: ^1.1.2
 ```
 
 Then run:
 
 ```bash
-$ fvm flutter pub get
+$ dart pub get
 ```
 
 or
@@ -49,7 +49,7 @@ make coverage
 # Open HTML coverage report
 make open
 
-# Publish package (publist is an alias)
+# Publish package
 make publish
 ```
 
